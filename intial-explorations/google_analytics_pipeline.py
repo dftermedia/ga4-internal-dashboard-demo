@@ -7,11 +7,8 @@ from google_analytics import google_analytics
 
 # this can also be filled in config.toml and be left empty as a parameter.
 queries = [
-    {"resource_name": "session_start", "dimensions": ["date", "landingPagePlusQueryString"], "metrics": ["sessions"]},
-    {"resource_name": "views_and_bounce_rate", "dimensions": ["date", "pagePath"], "metrics": ["screenPageViews", "engagedSessions", "sessions"]},
-    {"resource_name": "channel_split", "dimensions": ["date","sessionDefaultChannelGroup"], "metrics": ["activeUsers"]}
+    {"resource_name": "session_start", "dimensions": ["date", "landingPagePlusQueryString"], "metrics": ["sessions"]}
 ]
-
 
 def simple_load():
     """
@@ -22,7 +19,7 @@ def simple_load():
     pipeline = dlt.pipeline(pipeline_name="dlt_google_analytics_pipeline", destination='duckdb', full_refresh=False, dataset_name="dlt_google_analytics_data")
     # Google Analytics source function - taking data from queries defined locally instead of config
     # TODO: pass your google analytics property id
-    data_analytics = google_analytics(property_id=12345678, queries=queries) # Enter your property id here
+    data_analytics = google_analytics(property_id=326252771, queries=queries) # Enter your property id here
     info = pipeline.run(data=data_analytics)
     print(info)
     return info
@@ -43,7 +40,7 @@ def simple_load_config():
     return info
 
 
-def chose_date_first_load(start_date: str = "2000-01-01"):
+def chose_date_first_load(start_date: str = "2025-11-01"):
     """
     Chooses the starting date for the first pipeline load. Subsequent loads of the pipeline will be from the last loaded date
     :param start_date: Needs to be the string version of date in the format yyyy-mm-dd and some other values: https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/DateRange

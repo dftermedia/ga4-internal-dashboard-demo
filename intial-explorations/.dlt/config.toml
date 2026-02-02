@@ -6,5 +6,5 @@ log_level="WARNING"  # the system log level of dlt
 dlthub_telemetry = true
 
 [sources.google_analytics]
-property_id = 0 # please set me up!
-queries = ["a", "b", "c"] # please set me up!
+property_id = 326252771 # please set me up!
+# queries = ["a", "b", "c"] # please set me up!
